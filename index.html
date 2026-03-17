@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Spot Share | 전국 성지순례 가이드</title>
+    <style>
+        :root { --main: #ff4757; --bg: #f1f2f6; }
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: var(--bg); color: #2d3436; }
+        header { background: var(--main); color: white; padding: 50px 20px; text-align: center; }
+        .search-area { margin: -30px auto 30px; width: 90%; max-width: 600px; position: relative; }
+        #searchInput { width: 100%; padding: 20px 25px; border-radius: 40px; border: none; box-shadow: 0 10px 25px rgba(255, 71, 87, 0.2); font-size: 1.1rem; outline: none; box-sizing: border-box; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-10px); }
+        .info { padding: 25px; flex-grow: 1; }
+        .tag { background: #ffeaa7; color: #d63031; padding: 4px 10px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; margin-right: 5px; }
+        h3 { margin: 15px 0 10px; font-size: 1.3rem; }
+        .jp-guide { background: #fffaf0; border-left: 5px solid #ffa502; padding: 15px; margin-top: 20px; border-radius: 0 10px 10px 0; font-size: 0.95rem; line-height: 1.6; }
+        .btn-map { display: block; text-align: center; background: #0984e3; color: white; padding: 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-map:hover { background: #74b9ff; }
+        .upload-btn { position: fixed; bottom: 30px; right: 30px; background: #2ecc71; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3); z-index: 100; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎬 K-Spot Share (Beta)</h1>
+    <p>전국의 드라마·영화 촬영지를 일본어와 한국어로 안내합니다.</p>
+</header>
+
+<div class="search-area">
+    <input type="text" id="searchInput" placeholder="작품명, 지역, 장소를 입력하세요 (ex. 미스터 션샤인, 대전)">
+</div>
+
+<div class="container" id="cardContainer">
+    <div class="card">
+        <div class="info">
+            <span class="tag">대전</span><span class="tag">드라마</span>
+            <h3>📍 미스터 션샤인: 구 충남도청</h3>
+            <p>드라마 속 웅장한 실내 장면이 촬영된 곳입니다. 대전역 도보 15분!</p>
+            <div class="jp-guide">
+                <strong>🇯🇵 JP Guide:</strong><br>
+                「ミスター・サンシャイン」のロケ地。レトロな近代建築が美しく、日本人ファンに人気のスポットです。
+            </div>
+        </div>
+        <a href="https://www.google.com/maps/search/대전+구충남도청" target="_blank" class="btn-map">구글 지도에서 위치 확인</a>
+    </div>
+
+    <div class="card">
+        <div class="info">
+            <span class="tag">강원</span><span class="tag">드라마</span>
+            <h3>📍 도깨비: 주문진 방사제</h3>
+            <p>공유와 김고은이 만난 그 전설의 바닷가 포토존입니다.</p>
+            <div class="jp-guide">
+                <strong>🇯🇵 JP Guide:</strong><br>
+                「トッケビ」の最も有名な撮影スポット。青い海を背景にドラマのポスターのような写真が撮れます。
+            </div>
+        </div>
+        <a href="https://www.google.com/maps/search/주문진+방사제" target="_blank" class="btn-map">구글 지도에서 위치 확인</a>
+    </div>
+</div>
+
+<a href="https://forms.google.com/" target="_blank" class="upload-btn">📸 성지 제보하기 (Upload)</a>
+
+<script>
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let query = this.value.toLowerCase();
+        let cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            let content = card.innerText.toLowerCase();
+            card.style.display = content.includes(query) ? "flex" : "none";
+        });
+    });
+</script>
+
+</body>
+</html>
